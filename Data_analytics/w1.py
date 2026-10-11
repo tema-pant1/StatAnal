@@ -53,9 +53,12 @@ with open(file_name_param, 'w') as file:
     file.write(param.to_string())
 
 #Здесь рисуется блочная диаграмма
-# fig, ax = plt.subplots(figsize = (10, 6))
-# ax.boxplot([weather[c].dropna() for c in weather.columns], tick_labels = weather.columns)
-# fig.savefig('plot.png')
+fig, ax = plt.subplots(figsize = (10, 6))
+ax.boxplot([weather[c].dropna() for c in weather.columns], tick_labels = weather.columns)
+ax.set_xlabel("Месяц", fontsize=14)
+ax.set_ylabel("Температура,°C", fontsize=14)
+fig.suptitle("Распределение температуры по месяцам", fontsize=16)
+fig.savefig('plot.png')
 
 
 raw = []
