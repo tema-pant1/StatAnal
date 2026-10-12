@@ -91,6 +91,12 @@ for raw in axes:
     for ax in raw:
         ax.set_xlabel("Температура,°C", fontsize=10)
         ax.set_ylabel("Количество, лет", fontsize=10)
+        # медиана: заголовок оси совпадает с названием месяца
+        med = weather[ax.get_title()].median()
+        ax.axvline(med, color='red', linestyle='--', linewidth=2,
+                   label=f"Me = {med:.1f}")
+        ax.legend(fontsize=9)
+        
 fig = plt.gcf()
 fig.suptitle("Распределение температуры по месяцам", fontsize=16)
 plt.tight_layout(pad=2.6)
